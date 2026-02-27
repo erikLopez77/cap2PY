@@ -1,0 +1,27 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*
+# Entornos virtuales (el más importante)
+djvenv/
+venv/
+env/
+ENV/
+
+# Python (archivos compilados)
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Base de datos local (SQLite)
+# Es mejor no subirla para que no haya conflictos de datos
+db.sqlite3
+
+# Archivos de configuración sensible
+.env
+
+# Archivos de editores (VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Media y Static (archivos subidos por usuarios y archivos recolectados)
+/media/
+/static/
