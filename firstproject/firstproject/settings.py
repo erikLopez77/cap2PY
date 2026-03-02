@@ -55,7 +55,7 @@ ROOT_URLCONF = 'firstproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],# Agregar la carpeta de templates al proyecto
+        'DIRS': [BASE_DIR/'templates'],# Agregar mi carpeta de templates al proyecto
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

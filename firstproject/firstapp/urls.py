@@ -6,5 +6,7 @@ urlpatterns = [
     #views.index es la funcion index de views
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
-    path("user/<name>/",views.user,name="user")#default str:
+    path("user/<name>/",views.user,name="user"),#default str:
+    path("books/",views.books,name="books"),
+    path("book/<int:id>",views.book,name="book"),
 ]
