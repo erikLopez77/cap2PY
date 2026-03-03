@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h2>List of books</h2>
+        <br>
+        <!-- se le paso el context "books" -->
+        {% for book in books %}
+            <p><b>Title:</b> {{ book.title }}</p>
+            <p><b>Author:</b> {{ book.author }}</p>
+            <p><b>Price:</b> {{ book.price}}</p>
+            <p><b>Publisher:</b> {{ book.publisher }}</p>
+            <hr>
+        {% endfor %}
+    </body>
+</html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import sqlite3
+from .models import Book
 # Create your views here.
 
 def index(request):
@@ -13,18 +13,20 @@ def about(request):
 def user(request,name):
     return HttpResponse(f"<h2>Hello, {name}, welcome to the home page of firstapp</h2>")
 
-def books(request):
-    conn= sqlite3.connect("db.sqlite3")
-    cur=conn.cursor()
-    qry="   SELECT * FROM Books"
-    cur.execute(qry)
-    books=cur.fetchall()
-    return HttpResponse(str(books))
-
 def book(request, id):
-    conn= sqlite3.connect("db.sqlite3")
-    cur=conn.cursor()
-    qry="   SELECT * FROM Books WHERE id=?"
-    cur.execute(qry,(id,))
-    book=cur.fetchone()
-    return HttpResponse(str(book))
+    book=Book.objects.get(id=id)
+    context={'book':book}
+    return render(request,'book.html',context)
+    
+def books(request):
+    books=Book.objects.all()
+    context={'books': books}
+    return render(request,'list_books.html',context)
+
+def getbook(request):
+    context={}
+    return render(request,"bookform.html",context)
+
+def langs(request):
+    context={"langs": ["Python","Java","C++"]}
+    return render(request,'template.html', context)

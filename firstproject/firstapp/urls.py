@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path("user/<name>/",views.user,name="user"),#default str:
+    path("book/<int:id>/",views.book,name="book"),
     path("books/",views.books,name="books"),
-    path("book/<int:id>",views.book,name="book"),
+    path("getbook/",views.getbook,name="getbook"),
+    path("list/",views.langs,name="langs")
 ]

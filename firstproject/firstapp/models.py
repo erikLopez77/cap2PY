@@ -7,6 +7,7 @@ class Book(models.Model):
     author=models.CharField(max_length=50)
     price=models.IntegerField()
     publisher=models.CharField(max_length=50)
+    ebook=models.BooleanField(default=True)
     
     class Meta:
         db_table="books"
