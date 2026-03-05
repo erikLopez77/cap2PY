@@ -21,14 +21,14 @@ class BookDeleteView(DeleteView):
     model = Book
     template_name = "book_confirm_delete.html"
     success_url = "../books/"
-    
+
     def get_object(self):
         return Book.objects.get(author=self.kwargs['author'])
 
 class BookDetailView(DetailView):
     model = Book
     template_name = "book.html"
-    
+
     def get_object(self):
         return Book.objects.get(id=self.kwargs['pk'])
 
@@ -45,10 +45,10 @@ def index(request):
     return render(request, "index.html")
 
 def about(request):
-    return HttpResponse("<h2>Saber acerca mas de esta app </h2>")
+    return render(request, "about.html")
 
 def login(request):
-    return HttpResponse("<h2>login </h2>")
+    return render(request, "login.html")
 
 def user(request,name):
     return HttpResponse(f"<h2>Hello, {name}, welcome to the home page of firstapp</h2>")
@@ -57,7 +57,7 @@ def book(request, id):
     book=Book.objects.get(id=id)
     context={'book':book}
     return render(request,'book.html',context)
-    
+
 def books(request):
     books=Book.objects.all()
     context={'books': books}

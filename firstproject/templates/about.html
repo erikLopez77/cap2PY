@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        {% include 'top.html' %}
+        <h1 style="text-align: center;">This is about page</h1>
+        {% include 'bottom.html' %}
+    </body>
+</html>

@@ -7,9 +7,6 @@ urlpatterns = [
     #route es la string de URL, excluye host y prefix
     #views.index es la funcion index de views
     #path('/', IndexView.as_view(), name='index'),
-    path('', views.index, name='home'),
-    path('about/', views.about, name='about'),
-    path('login/', views.about, name='login'),
     path("user/<name>/",views.user,name="user"),#default str:
     path("book/<int:id>/",views.book,name="book"),
     path("books/",views.books,name="books"),
