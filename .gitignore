@@ -5,6 +5,8 @@ venv/
 env/
 ENV/
 
+firstproject/static/admin/
+
 # Python (archivos compilados)
 **/__pycache__/
 *.py[cod]
@@ -21,6 +23,3 @@ db.sqlite3
 .vscode/
 .idea/
 
-# Media y Static (archivos subidos por usuarios y archivos recolectados)
-/media/
-/static/

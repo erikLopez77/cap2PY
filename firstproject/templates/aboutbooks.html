@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script src="{% static 'script.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        
+        {% for book in books %}
+        <div id = "item-{{ book.id }}" class="collapsible"
+            onclick="myfunction('{{ book.id }}')">
+            {{ book.title }}
+        </div>
+    
+           <div id="detalle-{{ book.id }}" style="display:none; font-size: 20px;">
+            <ul>
+                <li><b>ID:</b> {{ book.id }}</li>
+                <li><b>Author:</b> {{ book.author }}</li>
+                <li><b>Price:</b> {{ book.price}}</li>
+                <li><b>Publisher:</b> {{ book.publisher }}</li>
+                    {% if book.ebook %}
+                <li><b>Available as Ebook?: </b> Yes</li>
+                    {% else %}
+                <li><b>Available as Ebook?: </b> No</li>
+                    {% endif %}
+            </ul>
+           </div>
+     {% endfor %}
+    </body>
+</html>
