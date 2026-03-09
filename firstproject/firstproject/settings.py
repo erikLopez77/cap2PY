@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'firstapp',# Agregar la app creada al proyecto 
+    'myapp',
 ]
 
 MIDDLEWARE = [

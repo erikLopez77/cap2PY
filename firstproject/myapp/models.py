@@ -13,3 +13,10 @@ class Book(Base):
     publisher=mapped_column(String(50))
     year_of_pub=mapped_column(Integer)
     
+from pymongo import MongoClient
+
+uri ="mongodb+srv://ErikLopez:ErikLopez@django.13lskiw.mongodb.net/?appName=Django"
+client = MongoClient(uri)
+#name db (mydb) books is collection name
+db = client.mydb 
+col = db['books']

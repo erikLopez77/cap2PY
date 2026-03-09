@@ -41,15 +41,6 @@ class BookListView(ListView):
         context={'books': books}
         return context
 
-def index(request):
-    return render(request, "index.html")
-
-def about(request):
-    return render(request, "about.html")
-
-def login(request):
-    return render(request, "login.html")
-
 def user(request,name):
     return HttpResponse(f"<h2>Hello, {name}, welcome to the home page of firstapp</h2>")
 
