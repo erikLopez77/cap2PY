@@ -15,17 +15,17 @@ def login(request):
 def addbook(request):
     if request.method=="POST":
         data = request.POST
-        id = data["id"]
-        ttl = data["title"]
-        auth = data["author"]
+        title = data["title"]
+        author = data["author"]
         price = data["price"]
-        pub = data["publisher"]
-        book = {"id":id, "title": ttl, "author":auth,
-        "price":price, "publisher":pub}
-        col.insert_one(book)
-        return HttpResponse("Document Added")
+        publisher = data["publisher"]
+        doc = Book(title = title, author = author, price =
+        price, publisher = publisher)
+        doc.save()
+        return HttpResponse("Document Successfully Added")
     else:
         return render(request, "book.html", {})
+
     
 def books(request, price):
     books = col.find({"price": {"$gt": price}})
