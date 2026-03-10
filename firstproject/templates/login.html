@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
- {% block title %}
+{% block title %}
  Login
- {% endblock %}
- {% block content %}
+{% endblock %}
+{% block content %}
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
  <div id="id01">
     <form class="modal-content animate" action="" method="POST">
          {% csrf_token %}

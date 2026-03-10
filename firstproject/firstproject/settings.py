@@ -113,7 +113,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 # STATIC_URL es la dirección web para acceder a los archivos

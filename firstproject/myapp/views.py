@@ -1,6 +1,7 @@
 from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import col
 
 def index(request):
@@ -10,6 +11,18 @@ def about(request):
     return render(request, "about.html")
 
 def login(request):
+    if request.method == 'POST':
+        name = request.POST.get("username")
+        password = request.POST.get("password")
+        if name =="" or password =="":
+            messages.error(request, "required")
+        if len(request.POST.get('password'))<9:
+            messages.warning(request, "Weak Password")
+        if name in ['admin', 'manager', 'superuser']:
+            messages.error(request, "Username Not Available")
+        else:
+            messages.success(request, "Login Successful.Welcome "+name)
+            return HttpResponse("success")
     return render(request, "login.html")
 
 def addbook(request):
