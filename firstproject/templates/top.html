@@ -2,6 +2,17 @@
     <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
+       {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% if message.level == 25 %}
+    <a href='#'> Log out</a>
+    {% else %}
+    <a href={% url "login" %}>Log In</a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <a href={% url "login" %}>Click here to Log In</a>
+    {% endif %}
     </ul>
 </nav>
