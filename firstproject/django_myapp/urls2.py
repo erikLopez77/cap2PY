@@ -10,4 +10,7 @@ urlpatterns=[
     path("getbook/<int:id>/", views.getbook,name="getbook"),
     path('books/<int:price>/', views.books, name='booksprice'),
     path('myview/', views.myview, name="myview"),
+    path('async/',views.async_view, name="async"),
+    path('sync/',views.sync_view, name="sync")
+
 ]

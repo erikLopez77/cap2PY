@@ -20,6 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     #rutas que empiecen en firstapp, estan en firstapp.urls
     path("firstapp/",include("firstapp.urls")),
-    path("myapp/",include("myapp.urls2")),
+    path("myapp/",include("django_myapp.urls2")),
     path('admin/', admin.site.urls),
 ]

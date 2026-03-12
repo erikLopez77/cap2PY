@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: django-myapp
+Version: 0.1
+Summary: Morderrn Django web development code, chapter 6
+Home-page: https://www.example.com/
+Author: Erik Lopez
+Author-email: tu@email.com
+License: : OSI Approved :: BSD License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: description-content-type
+Dynamic: license-file
+Dynamic: summary
+
+# myapp
+
+Breve descripción de qué hace tu proyecto y por qué es útil.
+
+## INSTALACIÓN
+Puedes instalar este paquete localmente usando pip:
+
+```bash
+
+pip3 install dist/django-myapp-0.1.tar.gz

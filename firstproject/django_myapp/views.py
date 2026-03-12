@@ -1,3 +1,4 @@
+import asyncio, httpx,time
 from urllib import request
 
 from django.shortcuts import render,redirect
@@ -82,3 +83,25 @@ def getbook(request, id):
 @login_required(login_url="../login/")
 def myview(request):
     return HttpResponse("This message will be displayed only if a user is logged in")
+
+async def async_call():
+    await asyncio.sleep(10)
+    async with httpx.AsyncClient() as client:
+        response = await client.get("https://httpbin.org/")
+    print("Response From httpbin: ", response)
+    print ("async call completed..")
+
+async def async_view(request):
+    loop = asyncio.get_event_loop()
+    loop.create_task(async_call())
+    return HttpResponse("Non-blocking HTTP Response")
+
+def sync_call():
+    time.sleep(10)
+    response=httpx.get("https://httpbin.org/")
+    print("Response from httpbin: ",response)
+    print("sync call completed..")
+
+def sync_view(request):
+    sync_call()
+    return HttpResponse("Blocking HTTP Response")
