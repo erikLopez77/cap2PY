@@ -21,5 +21,6 @@ urlpatterns = [
     #rutas que empiecen en firstapp, estan en firstapp.urls
     path("firstapp/",include("firstapp.urls")),
     path("myapp/",include("django_myapp.urls2")),
+    path("myapi/",include('myapi.urls')),
     path('admin/', admin.site.urls),
 ]

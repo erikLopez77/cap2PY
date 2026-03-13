@@ -14,17 +14,17 @@ class Book(Base):
     price=mapped_column(Integer)
     publisher=mapped_column(String(50))
     year_of_pub=mapped_column(Integer)
-    
+
 from pymongo import MongoClient
 
 uri ="mongodb+srv://ErikLopez:ErikLopez@django.13lskiw.mongodb.net/?appName=Django"
 client = MongoClient(uri)
 #name db (mydb) books is collection name
-db = client.mydb 
+db = client.mydb
 col = db['books']
 
 from mongoengine import *
-con = connect(db='mydb',username='ErikLopez',password='ErikLopez', host=uri)
+#con = connect(db='mydb',username='ErikLopez',password='ErikLopez', host=uri)
 
 class Book(DynamicDocument):
     title = StringField(max_length=50)
@@ -33,6 +33,6 @@ class Book(DynamicDocument):
     publisher = StringField(max_length=50)
     meta = {'collection': 'Books'}
 
-doc = Book(title="Beginning Django", author="Rubio ",
-price=3053, publisher="Apress", year=2017)
-doc.save()
+#doc = Book(title="Beginning Django", author="Rubio ",
+#price=3053, publisher="Apress", year=2017)
+#doc.save()

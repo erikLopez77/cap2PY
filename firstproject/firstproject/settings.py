@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'firstapp',# Agregar la app creada al proyecto 
-    'myapp',
+    'firstapp',# Agregar la app creada al proyecto
+    'django_myapp',
+    'rest_framework',
+    'myapi',
 ]
 
 MIDDLEWARE = [
@@ -117,13 +119,13 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 # STATIC_URL es la dirección web para acceder a los archivos
-import os 
+import os
 STATIC_URL = 'static/'
 # STATICFILES_DIRS son las carpetas donde tú GUARDAS tus archivos mientras desarrollas
 # Asegúrate de que esta carpeta NO sea la misma que STATIC_ROOT
 STATICFILES_DIRS = [
  BASE_DIR / "static",
 ]
-# STATIC_ROOT es a donde Django COPIA todo para producción. 
+# STATIC_ROOT es a donde Django COPIA todo para producción.
 # Déjalo fuera de tus carpetas de desarrollo.
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
