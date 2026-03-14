@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Ticket
 from .serializers import TicketSerializer
 # Create your views here.
@@ -47,5 +49,33 @@ def ticket_detail(request, pk):
         serialized_ticket=TicketSerializer(ticket,data=request.data,context={'request': request})
         return Response(serialized_ticket.data, status=400)
     elif request.method=='DELETE':
+        ticket.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class TicketListView(APIView):
+    def get(self, request):
+        tickets = Ticket.objects.all()
+        serialized_tickets = TicketSerializer(tickets,
+        many=True,context={'request': request})
+        return Response(serialized_tickets.data)
+    def post(self, request):
+        serialized_ticket = TicketSerializer(data=request.data,context={'request': request})
+        serialized_ticket.is_valid(raise_exception=True)
+        serialized_ticket.save()
+        return Response(serialized_ticket.validated_data,status.HTTP_201_CREATED)
+    
+class TicketDetailView(APIView):
+    def get(self, request, pk):
+        ticket = Ticket.objects.get(pk=pk)
+        serialized_ticket = TicketSerializer(ticket,context={'request': request})
+        return Response(serialized_ticket.data)
+    def put(self, request, pk):
+        ticket = Ticket.objects.get(pk=pk)
+        ticket.flight_number = request.data['flight_number']
+        ticket.save()
+        serialized_ticket=TicketSerializer(ticket,data=request.data,context={'request': request})
+        return Response(serialized_ticket.data, status=400)
+    def delete(self, request, pk):
+        ticket = Ticket.objects.get(pk=pk)
         ticket.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
