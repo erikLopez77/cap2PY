@@ -8,6 +8,6 @@ urlpatterns = [
     #path('tickets/', views.ticket_list, name='ticket-list'),
     #path('ticket/<int:pk>/', views.ticket_detail, name='ticket-detail'),
     #class-based views
-    path('tickets/', views.TicketListView.as_view(),name='ticket-list'),
-    path('ticket/<int:pk>/', views.TicketDetailView.as_view(),name='ticket-detail'),
+    path('tickets/', views.TicketListCreateView.as_view(),name='ticket-list'),
+    path('ticket/<int:pk>/', views.TicketRetrieveUpdateDeleteView.as_view(),name='ticket-detail'),
 ]

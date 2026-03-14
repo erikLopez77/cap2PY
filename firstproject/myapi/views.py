@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status,generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Ticket
@@ -79,3 +79,12 @@ class TicketDetailView(APIView):
         ticket = Ticket.objects.get(pk=pk)
         ticket.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class TicketListCreateView(generics.ListCreateAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+
+class TicketRetrieveUpdateDeleteView(generics.
+    RetrieveUpdateDestroyAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
