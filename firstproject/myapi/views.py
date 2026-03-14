@@ -23,28 +23,28 @@ def api_root(request):
     })
 
 @api_view(['GET', 'POST'])
-def tickets(request):
+def ticket_list(request):
     if request.method=='GET':
         tickets = Ticket.objects.all()
         serialized_tickets = TicketSerializer(tickets,
-        many=True)
+        many=True,context={'request': request})
         return Response(serialized_tickets.data)
     elif request.method=='POST':
-        serialized_ticket = TicketSerializer(data=request.data)
+        serialized_ticket = TicketSerializer(data=request.data,context={'request': request})
         serialized_ticket.is_valid(raise_exception=True)
         serialized_ticket.save()
         return Response(serialized_ticket.validated_data,status.HTTP_201_CREATED)
     
 @api_view(['GET','PUT', 'DELETE'])
-def ticket(request, id):
-    ticket = Ticket.objects.get(pk=id)
+def ticket_detail(request, pk):
+    ticket = Ticket.objects.get(pk=pk)
     if request.method=='GET':
-        serialized_ticket = TicketSerializer(ticket)
+        serialized_ticket = TicketSerializer(ticket,context={'request':request})
         return Response(serialized_ticket.data)
     elif request.method=='PUT':
         ticket.flight_number = request.data['flight_number']
         ticket.save()
-        serialized_ticket=TicketSerializer(ticket)
+        serialized_ticket=TicketSerializer(ticket,data=request.data,context={'request': request})
         return Response(serialized_ticket.data, status=400)
     elif request.method=='DELETE':
         ticket.delete()
