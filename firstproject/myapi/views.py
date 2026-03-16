@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from rest_framework import status,generics,viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Ticket
 from .serializers import TicketSerializer
 # Create your views here.
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes 
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
@@ -92,3 +93,9 @@ class TicketRetrieveUpdateDeleteView(generics.
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
+    permission_classes = [IsAuthenticated]
+
+@api_view()
+@permission_classes([IsAuthenticated])
+def auhtenticated_view(request):
+    return Response({'message': 'This view is only accessible to authenticated users.'})
