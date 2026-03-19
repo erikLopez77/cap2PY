@@ -22,7 +22,6 @@ from myapi.app import schema
 
 urlpatterns = [
     #rutas que empiecen en firstapp, estan en firstapp.urls
-    path("firstapp/",include("firstapp.urls")),
     path("myapp/",include("django_myapp.urls2")),
     path("api/",api.urls),
     path("myapi/",include("myapi.urls")),

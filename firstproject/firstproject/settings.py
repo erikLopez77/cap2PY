@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'ninja',
     'api',
-    'firstapp',# Agregar la app creada al proyecto
     'django_myapp',
     'rest_framework',
     'myapi',
+    'strawberry.django',
 ]
 
 MIDDLEWARE = [
