@@ -26,4 +26,5 @@ urlpatterns = [
     path("myapi/",include("myapi.urls")),
     path('admin/', admin.site.urls),
     path('graphql/', GraphQLView.as_view(graphiql=True)),
+    path('',include('chatApp.urls'))
 ]

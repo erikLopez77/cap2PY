@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Index Page</title>
+    </head>
+    <body onload="myFunction()">
+        <p id="Log"></p>
+        <h1>Let's chat</h1>
+        <form id="form">
+            <input type="text" name="message"/>
+            <p><b>Messages</b></p>
+            <div id="messages" style="border: thin solid black">
+            </div>
+        </form>
+
+        <script>
+        let url = 'ws://' + window.location.host + '/ws/chat/';
+        const chatSocket = new WebSocket(url);
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            console.log("Data: ", data);
+        };
+
+        </script>
+    </body>
+</html>

@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'chatApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'myapi',
     'strawberry.django',
-    'graphene_django'
+    'graphene_django',
 ]
 #path to schema object
 GRAPHENE = { 'SCHEMA': 'myapi.app.schema' }
@@ -78,6 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'firstproject.wsgi.application'
+ASGI_APPLICATION = 'firstproject.asgi.application'
 
 
 # Database
