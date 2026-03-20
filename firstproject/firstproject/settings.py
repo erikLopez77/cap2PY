@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'myapi',
     'strawberry.django',
+    'graphene_django'
 ]
+#path to schema object
+GRAPHENE = { 'SCHEMA': 'myapi.app.schema' }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

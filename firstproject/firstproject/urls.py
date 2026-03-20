@@ -17,8 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api.views import api
-from strawberry.django.views import AsyncGraphQLView
-from myapi.app import schema
+from graphene_django.views import GraphQLView
 
 urlpatterns = [
     #rutas que empiecen en firstapp, estan en firstapp.urls
@@ -26,5 +25,5 @@ urlpatterns = [
     path("api/",api.urls),
     path("myapi/",include("myapi.urls")),
     path('admin/', admin.site.urls),
-    path('graphql', AsyncGraphQLView.as_view(schema=schema)),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
