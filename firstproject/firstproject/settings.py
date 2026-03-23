@@ -82,7 +82,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'firstproject.wsgi.application'
 ASGI_APPLICATION = 'firstproject.asgi.application'
-
+#we will not use redis, so we will use in memory channel layer
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases

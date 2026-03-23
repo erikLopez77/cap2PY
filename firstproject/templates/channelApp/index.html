@@ -7,19 +7,45 @@
         <h1>Let's chat</h1>
         <form id="form">
             <input type="text" name="message"/>
+            <button id="sendMessage">Send Message</button>
             <p><b>Messages</b></p>
             <div id="messages" style="border: thin solid black">
             </div>
         </form>
 
         <script>
-        let url = 'ws://' + window.location.host + '/ws/chat/';
-        const chatSocket = new WebSocket(url);
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            console.log("Data: ", data);
-        };
-
+            let url = 'ws://' + window.location.host + '/ws/chat/';
+            const chatSocket = new WebSocket(url); 
+            /* chatSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                console.log("Data: ", data);
+            }; */
+            var user="";
+            function myFunction() {
+                user = prompt("Enter User name", "User1");
+                document.getElementById("Log").innerHTML =
+                "<h2>Hello " + user +"</h2>";
+            }
+            chatSocket.onmessage = function(e){
+                let data = JSON.parse(e.data)
+                console.log('Data:', data)
+                if(data.type === 'chat'){
+                    let messages = document.getElementById('messages')
+                    messages.insertAdjacentHTML('beforeend', `<div>
+                    <p>${data.message}</p>
+                    </div>`)
+                }
+            }
+            let form = document.getElementById('form')
+            form.addEventListener('submit', (e)=> {
+                e.preventDefault()
+                let message = e.target.message.value;
+                chatSocket.send(
+                    JSON.stringify({
+                    'message':user+":"+message
+                }))
+                form.reset()
+            })
         </script>
     </body>
 </html>
