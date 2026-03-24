@@ -1,8 +1,8 @@
 import json
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
 
-class ChatConsumer(WebsocketConsumer):
+class ChatConsumer(AsyncWebsocketConsumer):
     def connect(self):
         self.room_group_name = 'test'
         #first parameter is an async function (channels))
